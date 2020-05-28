@@ -88,8 +88,8 @@ export interface RemoteConfigTemplate {
 
 /** Interface representing a Remote Config version. */
 export interface Version {
-  versionNumber?: string | number; // int64 format
-  updateTime?: string; // in RFC3339 UTC "Zulu" format, accurate to nanoseconds
+  versionNumber?: string; // int64 format
+  updateTime?: string; // in UTC
   updateOrigin?: ('REMOTE_CONFIG_UPDATE_ORIGIN_UNSPECIFIED' | 'CONSOLE' |
     'REST_API' | 'ADMIN_SDK_NODE');
   updateType?: ('REMOTE_CONFIG_UPDATE_TYPE_UNSPECIFIED' |
@@ -100,7 +100,7 @@ export interface Version {
   isLegacy?: boolean;
 }
 
-/** Interface representing a Remote Config list version results. */
+/** Interface representing a list of Remote Config template versions. */
 export interface ListVersionsResult {
   versions: Version[];
   nextPageToken?: string;
@@ -111,8 +111,8 @@ export interface ListVersionsOptions {
   pageSize?: number;
   pageToken?: string;
   endVersionNumber?: string | number;
-  startTime?: Date;
-  endTime?: Date;
+  startTime?: Date | string;
+  endTime?: Date | string;
 }
 
 /** Interface representing a Remote Config user. */
